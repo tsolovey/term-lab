@@ -11,9 +11,9 @@ Technologies used:
   - jQuery
 
 The application architecture is MVC based. 
-  View: terms.jsp
-  Controllers: TermsController.java, TermInfoController.java
-  Model: Term.java, Fault.java, ExternalReference.java 
+  - View: terms.jsp
+  - Controllers: TermsController.java, TermInfoController.java
+  - Model: Term.java, Fault.java, ExternalReference.java 
 
 To run the application execute the following command from the root directory
 
