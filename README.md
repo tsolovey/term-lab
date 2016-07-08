@@ -1,9 +1,10 @@
 # term-lab
 
-The application is to demonstrate MVC usage.
+The application is to demonstrate MVC usage. it’s not a fully functional app but just a simple demo – the data is hardcoded, there is no error handling, security features and etc. The unit testing is skipped either. 
  
 This is a single page application. The page displays a list of medical terms. When a user clicks on one of the terms, the popup window appears inside the current page. 
 The popup window contains a list of links to external resources about a term. A user may click on these reference links to view information about a medical term in a new window.
+
 
 Technologies used: 
   - Spring Boot with embedded Tomcat
