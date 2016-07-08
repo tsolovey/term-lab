@@ -5,6 +5,9 @@ The application is to demonstrate MVC usage. it’s not a fully functional app b
 This is a single page application. The page displays a list of medical terms. When a user clicks on one of the terms, the popup window appears inside the current page. 
 The popup window contains a list of links to external resources about a term. A user may click on these reference links to view information about a medical term in a new window.
 
+The demo app demonstrates two possible solutions for retrieving the list of external references:
+-	Solution 1: If the list of external resources is the same for all terms then it can be stored in application properties file. 
+-	Solution 2: If the list of external resources is unique for each term then it should be stored in the application DB
 
 Technologies used: 
   - Spring Boot with embedded Tomcat
