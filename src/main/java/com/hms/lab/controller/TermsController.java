@@ -8,37 +8,40 @@ import com.hms.lab.TermsProperties;
 import com.hms.lab.exception.TermsException;
 import com.hms.lab.model.Fault;
 import com.hms.lab.model.Term;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TermsController {
 
-    @Autowired
-    private TermsProperties termsProperties;
+    private final TermsProperties termsProperties;
+    private final ObjectMapper objectMapper;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String welcome(ModelMap model) {
+    public TermsController(TermsProperties termsProperties, ObjectMapper objectMapper) {
+        this.termsProperties = termsProperties;
+        this.objectMapper = objectMapper;
+    }
 
+    @GetMapping("/")
+    public String welcome(Model model) {
         // The data below is for demo purposes only. The real data should be extracted from a DB.
-        List<Term> terms = new ArrayList<Term>();
+        List<Term> terms = new ArrayList<>();
         terms.add(new Term(1, "Flu", 42));
         terms.add(new Term(2, "Allergies", 12));
 
         // add a list of terms to the model
-        model.put("terms", terms);
+        model.addAttribute("terms", terms);
 
         // add the list of external references read from application.properties to the model
         String json = "";
         try {
-            json = (new ObjectMapper()).writeValueAsString(termsProperties.getReferences());
+            json = objectMapper.writeValueAsString(termsProperties.getReferences());
         } catch (Exception e) {
             throw new TermsException(e.getMessage());
         }
-        model.put("references", json);
+        model.addAttribute("references", json);
 
         return "terms";
     }
